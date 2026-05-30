@@ -794,112 +794,79 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 435205930063078515, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
+    - target: {fileID: 161087514150961505, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_fontSize
+      value: 18
       objectReference: {fileID: 0}
-    - target: {fileID: 1655467215861167382, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
+    - target: {fileID: 197625974802769113, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.64208984
       objectReference: {fileID: 0}
-    - target: {fileID: 2119314645548855562, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1
+    - target: {fileID: 197625974802769113, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.033935547
       objectReference: {fileID: 0}
-    - target: {fileID: 2119314645548855562, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
+    - target: {fileID: 397591716301034817, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.38360596
+      objectReference: {fileID: 0}
+    - target: {fileID: 1531732198388424027, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3147409868543046682, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 3281398971490624179, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2119314645548855562, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.damper
+    - target: {fileID: 3281398971490624179, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2119314645548855562, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.spring
+    - target: {fileID: 4192669496376583612, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_fontSize
+      value: 15.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4735830699742506499, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.8830032
+      objectReference: {fileID: 0}
+    - target: {fileID: 5462486196179954292, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2119314645548855562, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
+    - target: {fileID: 5462486196179954292, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3650280713602137723, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650280713602137723, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
+    - target: {fileID: 5462486196179954292, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3650280713602137723, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 0
+    - target: {fileID: 5629058051872100321, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.59095764
       objectReference: {fileID: 0}
-    - target: {fileID: 3650280713602137723, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 0
+    - target: {fileID: 6786405264990006386, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.22607422
       objectReference: {fileID: 0}
-    - target: {fileID: 3650280713602137723, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
+    - target: {fileID: 7980094334031998866, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -47.35205
       objectReference: {fileID: 0}
-    - target: {fileID: 3679288337926510669, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
+    - target: {fileID: 7980094334031998866, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
       objectReference: {fileID: 0}
-    - target: {fileID: 4441447488518464782, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
+    - target: {fileID: 8593303705076298860, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.000015258789
       objectReference: {fileID: 0}
-    - target: {fileID: 5153182047697882782, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153182047697882782, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153182047697882782, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153182047697882782, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5153182047697882782, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5274844677454932756, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
-    - target: {fileID: 6674431128221926456, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547259514846415536, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionDistance
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547259514846415536, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547259514846415536, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.damper
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547259514846415536, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.spring
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547259514846415536, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_SuspensionSpring.targetPosition
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2668481098000150764, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
