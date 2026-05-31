@@ -1368,16 +1368,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  ConstMinPressure: 0
+  InputPressureRate: 0.3
+  MaxInputPedalPressure: 1
+  PressureDampeningRate: 0.1
+  PressureDampeningInterval: 0.5
   playerPress:
     m_Name: Player Press
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: cf903fe2-f0cf-4a33-b0e2-56cab5807749
+    m_Id: 552202d0-abcf-497b-ba66-58886b886408
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: 8fa2ae54-953a-43d2-b49c-90a2cda00539
+      m_Id: 67d57002-624d-4e77-ad06-25b342aa71f1
       m_Path: <Keyboard>/s
       m_Interactions: 
       m_Processors: 
@@ -1385,7 +1390,7 @@ MonoBehaviour:
       m_Action: Player Press
       m_Flags: 0
     - m_Name: 
-      m_Id: d816b44f-144c-4243-9818-c346a5c89478
+      m_Id: e3484164-1434-4797-a399-1ef30595f1bc
       m_Path: <Keyboard>/downArrow
       m_Interactions: 
       m_Processors: 
@@ -1994,6 +1999,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  ConstMinPressure: 0.1
+  InputPressureRate: 0.3
+  MaxInputPedalPressure: 0.9
+  PressureDampeningRate: 0.1
+  PressureDampeningInterval: 0.5
   playerPress:
     m_Name: Player Press
     m_Type: 0
