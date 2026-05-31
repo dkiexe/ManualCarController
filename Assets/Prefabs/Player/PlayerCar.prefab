@@ -1438,8 +1438,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8617256979671219750}
+  - component: {fileID: 2249841356901999520}
   m_Layer: 0
-  m_Name: Gears
+  m_Name: GearSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1460,6 +1461,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4922170374542132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2249841356901999520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5238195361164329651}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 252cbaef203ac2a4898e28ecb1fff0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  gearRatios:
+  - 3.5
+  - 2.2
+  - 1.52
+  - 1.22
+  - 1
+  - 0.83
+  finalDriveRatio: 3.5
+  gearIndex: 0
 --- !u!1 &6237988299441471305
 GameObject:
   m_ObjectHideFlags: 0
@@ -2218,7 +2240,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.45700002, y: 0.3844167}
   m_AnchorMax: {x: 0.54321927, y: 0.58500004}
-  m_AnchoredPosition: {x: 0, y: -0.11700058}
+  m_AnchoredPosition: {x: 0, y: -0.117004395}
   m_SizeDelta: {x: 0, y: 0.2340002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3959447834439839621
