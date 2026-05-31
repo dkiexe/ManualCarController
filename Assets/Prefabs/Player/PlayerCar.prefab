@@ -556,6 +556,7 @@ Transform:
   - {fileID: 6191555376862277279}
   - {fileID: 912371343815839660}
   - {fileID: 8617256979671219750}
+  - {fileID: 1066203920900461642}
   - {fileID: 893679484120840805}
   - {fileID: 8818201480054920311}
   - {fileID: 5183011598014438175}
@@ -1323,6 +1324,75 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3316855065787702786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8981958126297603564}
+  - component: {fileID: 796725242683817065}
+  m_Layer: 0
+  m_Name: BreakPedal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8981958126297603564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316855065787702786}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1066203920900461642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &796725242683817065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3316855065787702786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  playerPress:
+    m_Name: Player Press
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cf903fe2-f0cf-4a33-b0e2-56cab5807749
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 8fa2ae54-953a-43d2-b49c-90a2cda00539
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Press
+      m_Flags: 0
+    - m_Name: 
+      m_Id: d816b44f-144c-4243-9818-c346a5c89478
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Press
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &3781408250420937007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1352,6 +1422,39 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 4922170374542132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4665985573191603122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1066203920900461642}
+  m_Layer: 0
+  m_Name: Pedals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1066203920900461642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4665985573191603122}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1800.5515, y: 1414.0702, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1997748744933389978}
+  - {fileID: 8981958126297603564}
   m_Father: {fileID: 4922170374542132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4845793073589057548
@@ -1474,6 +1577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   gearRatios:
+  - 0
   - 3.5
   - 2.2
   - 1.52
@@ -1482,6 +1586,48 @@ MonoBehaviour:
   - 0.83
   finalDriveRatio: 3.5
   gearIndex: 0
+  shiftGearInput:
+    m_Name: Shift Gear Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 05a27dbb-029b-4732-8d53-1d369b54b089
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a33921c5-0be0-4e93-bd2a-f19e588849fc
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shift Gear Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: dfcab165-13c3-4f3b-8c85-fb3f05ff5a9b
+      m_Path: <Keyboard>/leftShift
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shift Gear Input
+      m_Flags: 0
+    m_Flags: 0
+  shiftToNeutralInput:
+    m_Name: Shift To Neutral Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 879885ed-09ef-4412-8a4b-f9d637ab173d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: c7c40c5c-190c-4066-a9db-2149637cf295
+      m_Path: <Keyboard>/n
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Shift To Neutral Input
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &6237988299441471305
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1950,75 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7715939689240056586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1997748744933389978}
+  - component: {fileID: 1055151374559681108}
+  m_Layer: 0
+  m_Name: GasPedal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1997748744933389978
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715939689240056586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1066203920900461642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1055151374559681108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7715939689240056586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  playerPress:
+    m_Name: Player Press
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 552202d0-abcf-497b-ba66-58886b886408
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 67d57002-624d-4e77-ad06-25b342aa71f1
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Press
+      m_Flags: 0
+    - m_Name: 
+      m_Id: e3484164-1434-4797-a399-1ef30595f1bc
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Player Press
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &8018512196661220782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,6 +2246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6191555376862277279}
+  - component: {fileID: 7871799623110596149}
   m_Layer: 0
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -2053,6 +2269,68 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4922170374542132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7871799623110596149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402817658836391833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e90afb6457bb8c649a5a2450109782bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  leftTurnInput:
+    m_Name: Left Turn Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c7371edc-0f4f-4003-ad20-00790f34be14
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 1c6ae6a4-d47f-40ae-9aaa-8a8edec72972
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Turn Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2465f72e-b3fc-4b74-a3c8-bf91b3f43f28
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Left Turn Input
+      m_Flags: 0
+    m_Flags: 0
+  RightTurnInput:
+    m_Name: Right Turn Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: bd7b3ade-ad89-4689-bbc6-92b8e136f53a
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5967a942-844e-4d43-94ae-b544a36f50f1
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Turn Input
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 31a5cc70-50e8-4379-8728-2ce74ae82f74
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Right Turn Input
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &8475105099959288930
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,6 +2707,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 912371343815839660}
+  - component: {fileID: 7654112353132728607}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -2451,6 +2730,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4922170374542132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7654112353132728607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8955238058924125488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2af78eb94077894d917f881cc304b31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &8993527042557583220
 GameObject:
   m_ObjectHideFlags: 0
