@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,13 +20,42 @@ public class GearSystemScript : MonoBehaviour
     internal float currentGearIndex => gearIndex;
     internal bool InNeutral => gearIndex == 0;
 
-    private void Update()
+    // Unity Methods
+    private void OnEnable()
     {
-        if (shiftGearInput.IsPressed())
+        shiftGearInput.Enable();
+        shiftToNeutralInput.Enable();
+
+        shiftGearInput.performed += ShiftUpInputHandler;
+        shiftToNeutralInput.performed += ShiftNInputHandler;
+    }
+    
+    private void OnDisable()
+    {
+        shiftGearInput.Disable();
+        shiftToNeutralInput.Disable();
+
+        shiftGearInput.performed -= ShiftUpInputHandler;
+        shiftToNeutralInput.performed -= ShiftNInputHandler;
+    }
+
+    private void OnDestroy()
+    {
+        shiftGearInput.Dispose();
+        shiftToNeutralInput.Dispose();
+    }
+
+    // Class Methods
+    private void ShiftUpInputHandler(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
             ShiftUP();
         }
-        else if (shiftToNeutralInput.IsPressed())
+    }
+    private void ShiftNInputHandler(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
             ShiftToNeutral();
         }
@@ -33,7 +63,7 @@ public class GearSystemScript : MonoBehaviour
 
     internal void ShiftToNeutral() => gearIndex = 0;
 
-    internal void ShiftUP() => gearIndex = Mathf.Min(gearIndex + 1, gearRatios.Length);
+    internal void ShiftUP() => gearIndex = Mathf.Min(gearIndex + 1, gearRatios.Length - 1);
 
     internal void ShiftDown() => gearIndex = Mathf.Max(gearIndex - 1, 0);
 }
