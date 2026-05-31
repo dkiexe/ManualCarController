@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,10 +14,11 @@ public class PedalScript : MonoBehaviour
 
 
     [Header("Player Input")]
-    [SerializeField] private InputAction playerPress;
+    [SerializeField] internal InputAction playerPress;
 
     // Class Private Fields
     private float DampenTimeElapsed = 0f;
+    private bool IsOnCooldown;
 
     // Class Properties
     internal float MaxPedalPressure { get; private set; }
@@ -39,7 +41,7 @@ public class PedalScript : MonoBehaviour
 
     private void Update()
     {
-        if (playerPress.IsPressed())
+        if (playerPress.IsPressed() && !IsOnCooldown)
         {
             ApplyPressure();
             if (DampenTimeElapsed != 0) DampenTimeElapsed = 0;
@@ -73,8 +75,26 @@ public class PedalScript : MonoBehaviour
         }
     }
 
+    public void ImitatePress()
+    {
+        ApplyPressure();
+        if (DampenTimeElapsed != 0) DampenTimeElapsed = 0;
+    }
+
+    public void AssignPedalCooldown(float time)
+    {
+        AwaitPedalCooldown(time);
+    }
+
+    private IEnumerator AwaitPedalCooldown(float time)
+    {
+        IsOnCooldown = true;
+        yield return new WaitForSeconds(time);
+        IsOnCooldown = false;
+    }
+
     private void ApplyPressure() => InputPedalPressure = Mathf.Min(
-            InputPedalPressure += InputPressureRate * Time.deltaTime, 
+            InputPedalPressure + InputPressureRate * Time.deltaTime, 
             MaxInputPedalPressure
         );
 
