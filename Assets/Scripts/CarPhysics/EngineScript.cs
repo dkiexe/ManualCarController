@@ -19,27 +19,31 @@ public class EngineScript : MonoBehaviour
     [SerializeField] private float RPMResponseSpeed = 1f;
     [SerializeField] private float RPMDecaySpeed = 1f;
 
-    [Header("Engine Tracking Data Channels")]
-    [SerializeField] private FloatChannel ChannelEngineRPM;
-    [SerializeField] private FloatChannel ChannelKMH;
+    // Attributes
+    public float KMH { get; private set;  }
+    public float MaxSpeedKMH { get; private set; }
+    public float EngineRPM { get; private set; }
+
+    public float minRPM => MinRPM;
+    public float maxRPM => MaxRPM;
 
     // Private Fields.
     private float MaxTorque;
-    
-    public float EngineRPM { get; private set; }
 
     private void Start()
     {
-        ChannelKMH.InitializeChannel(0, MaxKMH, 0); // Note! this limit is visual only!
-        ChannelEngineRPM.InitializeChannel(MinRPM, MaxRPM, MinRPM);
+        MaxSpeedKMH = (float)((maxRPM * 2 * Mathf.PI * ForceWheels[0].wheelCollider.radius) / 
+            (GearBox.GetGearRatio(GearBox.GearCount - 1) * GearBox.finalDrive * 60) * 3.6);
+
         MaxTorque = (EngineHP * 7127) / MaxRPM;
+        
         EngineRPM = MinRPM;
     }
 
     private void FixedUpdate()
     {
         // ****GlobalPhysics****
-        ChannelKMH.SetVal(CalculateKMH());
+        KMH = CalculateKMH();
 
         // ****DrivePhysics****
         float EngineTorque_t = 0;
@@ -59,7 +63,6 @@ public class EngineScript : MonoBehaviour
                     Time.fixedDeltaTime * RPMDecaySpeed
                 );
         }
-        ChannelEngineRPM.SetVal(EngineRPM);
         TransferTorqueToWheels(EngineTorque_t);
     }
     private float CalculateKMH()

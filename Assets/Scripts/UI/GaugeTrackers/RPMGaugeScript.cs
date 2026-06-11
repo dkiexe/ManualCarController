@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class RPMGaugeScript : GaugeScript
 {
-    [SerializeField] private IntChannel GearChannel;
+    [SerializeField] private EngineScript engine;
+    [SerializeField] private GearSystemScript GearBox;
     [SerializeField] private TextMeshProUGUI gearDisplayText;
 
     // Privete fields
@@ -11,10 +12,15 @@ public class RPMGaugeScript : GaugeScript
 
     private void Update()
     {
-        if (currentGearVal != GearChannel.Value)
+        if (currentGearVal != GearBox.currentGearIndex)
         {
-            currentGearVal = GearChannel.Value;
+            currentGearVal = GearBox.currentGearIndex;
             ChangeGearDisplay();
+        }
+
+        if (engine != null)
+        {
+            UpdateNeedle(engine.minRPM, engine.maxRPM, engine.EngineRPM);
         }
     }
 

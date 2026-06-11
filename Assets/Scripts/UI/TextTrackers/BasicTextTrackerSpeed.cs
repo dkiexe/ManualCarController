@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BasicTextTrackerSpeed : MonoBehaviour
 {
-    [SerializeField] private FloatChannel Speedchannel;
+    [SerializeField] private EngineScript engine;
     [SerializeField] private TextMeshProUGUI speedDisplayText;
 
 
@@ -11,6 +11,6 @@ public class BasicTextTrackerSpeed : MonoBehaviour
 
     private void FixedUpdate()
     {
-        speedDisplayText.text = Mathf.Round(Speedchannel.Value).ToString() + strSurfix;
+        speedDisplayText.text = Mathf.Round(engine.KMH).ToString() + strSurfix;
     }
 }

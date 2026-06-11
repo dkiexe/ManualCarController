@@ -14,17 +14,16 @@ public class GearSystemScript : MonoBehaviour
     [Header("Variables")]
     [SerializeField] private int gearIndex = 0;
 
-    [Header("Gear Tracking Data Channels")]
-    [SerializeField] private IntChannel ChannelGearIndex;
-
     [Header("Player Input")]
     [SerializeField] private InputAction shiftToNeutralInput;
 
     // Class Properties
     internal float currentGearRatio => gearRatios[gearIndex];
-    internal int currentGearIndex => gearIndex;
     internal float finalDrive => finalDriveRatio;
+    internal int GearCount => gearRatios.Length;
+    internal int currentGearIndex => gearIndex;
     internal bool InNeutral => gearIndex == 0;
+
 
     // Unity Methods
     private void OnEnable()
@@ -33,11 +32,6 @@ public class GearSystemScript : MonoBehaviour
 
         ClutchPedal.playerPress.performed += ShiftUpInputHandler;
         shiftToNeutralInput.performed += ShiftNInputHandler;
-    }
-
-    private void Start()
-    {
-        ChannelGearIndex.InitializeChannel(gearIndex, gearRatios.Length - 1, 0);
     }
 
     private void OnDisable()
@@ -72,20 +66,17 @@ public class GearSystemScript : MonoBehaviour
     internal void ShiftToNeutral() 
     { 
         gearIndex = 0;
-        UpdateGearDataChannel();
     }
 
     internal void ShiftUP() 
     {
         gearIndex = Mathf.Min(gearIndex + 1, gearRatios.Length - 1);
-        UpdateGearDataChannel();
     }
 
     internal void ShiftDown()
     {
         gearIndex = Mathf.Max(gearIndex - 1, 0);
-        UpdateGearDataChannel();
     }
 
-    private void UpdateGearDataChannel() => ChannelGearIndex.SetVal(gearIndex);
+    public float GetGearRatio(int gearIndex) => gearRatios[gearIndex];
 }

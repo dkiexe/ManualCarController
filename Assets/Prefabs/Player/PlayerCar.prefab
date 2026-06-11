@@ -743,7 +743,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 613b87e5ef1a38a4f8fc0a3a65aa85d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTextTrackerSpeed
-  Speedchannel: {fileID: 11400000, guid: 9ccbd99ca1ba69e43b3d77c7514e82a6, type: 2}
+  engine: {fileID: 7654112353132728607}
   speedDisplayText: {fileID: 4192669496376583612}
 --- !u!1 &2400359855065198475
 GameObject:
@@ -769,8 +769,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2400359855065198475}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22692, y: 0, z: -0.03606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -791,7 +791,7 @@ GameObject:
   - component: {fileID: 197625974802769113}
   - component: {fileID: 1174558550682601391}
   - component: {fileID: 3442940240847362661}
-  - component: {fileID: 7501808772397653109}
+  - component: {fileID: 3210393829679351143}
   m_Layer: 0
   m_Name: Speedometer
   m_TagString: Untagged
@@ -857,7 +857,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7501808772397653109
+--- !u!114 &3210393829679351143
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -866,13 +866,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3020362690140798830}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6f0f55d6f9b2a43a39d7dba7e44e6c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f6712bf657df854291a460f19135ce6, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
-  channel: {fileID: 11400000, guid: 9ccbd99ca1ba69e43b3d77c7514e82a6, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::SpeedGaugeScript
   gaugeNeedle: {fileID: 983287529952536854}
   minAngle: 436
   maxAngle: 240
+  engine: {fileID: 7654112353132728607}
 --- !u!1 &3109635436201021653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,8 +1051,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4055800482224552435}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.30717, y: -8.49994, z: 5.07705}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1145,8 +1145,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4665985573191603122}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1800.5515, y: 1414.0702, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1359,7 +1359,6 @@ MonoBehaviour:
   - 1
   finalDriveRatio: 3.5
   gearIndex: 0
-  ChannelGearIndex: {fileID: 11400000, guid: 0627dd66077facd49aea29d82004b195, type: 2}
   shiftToNeutralInput:
     m_Name: Shift To Neutral Input
     m_Type: 0
@@ -1752,8 +1751,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6559505972790565891}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.28902, y: 0, z: 0.12124}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2744,7 +2743,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6191555376862277279}
-  - component: {fileID: 7871799623110596149}
+  - component: {fileID: 4634900530546861137}
   m_Layer: 0
   m_Name: SteeringWheel
   m_TagString: Untagged
@@ -2767,7 +2766,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4922170374542132}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7871799623110596149
+--- !u!114 &4634900530546861137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2776,28 +2775,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 8402817658836391833}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90afb6457bb8c649a5a2450109782bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a6de83f2c01ae848921099d2799a823, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: '::'
+  m_EditorClassIdentifier: Assembly-CSharp::SteeringWheelScript
   rb: {fileID: 2438154954208035303}
   RotationWheels:
   - {fileID: 8027523237925332412}
   - {fileID: 7890964078158491476}
-  PhysicslRotationScalar: 50
+  physicsRotationScalar: 50
   visualRotationScalar: 50
   rotationDampMulti: 2
   maxRotationAngle: 30
-  yawAssistStrength: 5000
+  yawAssistStrength: 3000
   RotationDirInput:
     m_Name: Rotation Dir Input
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 8b6ddafc-4ee3-4d9c-bae1-9293e61b2aa4
+    m_Id: dd117feb-ce5a-49f4-a4ce-dacfa9eceaf8
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 1D Axis
-      m_Id: f8d93993-8514-4feb-98c5-7005b8d90592
+      m_Id: 8764104d-0f73-449e-95d5-fe89ed4ea624
       m_Path: 1DAxis
       m_Interactions: 
       m_Processors: 
@@ -2805,7 +2804,7 @@ MonoBehaviour:
       m_Action: Rotation Dir Input
       m_Flags: 4
     - m_Name: negative
-      m_Id: f3fd9f37-137d-49e3-a7bb-4e9fe306a76b
+      m_Id: db8e4f15-7bb0-4a68-ae13-c9a3c43433d6
       m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
@@ -2813,7 +2812,7 @@ MonoBehaviour:
       m_Action: Rotation Dir Input
       m_Flags: 8
     - m_Name: positive
-      m_Id: d9d5dd41-48e8-4773-a81c-ce72f725b3c3
+      m_Id: d35ffea0-5e87-4ad3-a557-714099d3e4e6
       m_Path: <Keyboard>/d
       m_Interactions: 
       m_Processors: 
@@ -3038,11 +3037,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dedc079019580940acd73badfdb3ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RPMGaugeScript
-  channel: {fileID: 11400000, guid: c63e24f3492a7d0418c24c76652dac3a, type: 2}
   gaugeNeedle: {fileID: 8029828374993004210}
   minAngle: 436
   maxAngle: 240
-  GearChannel: {fileID: 11400000, guid: 0627dd66077facd49aea29d82004b195, type: 2}
+  engine: {fileID: 7654112353132728607}
+  GearBox: {fileID: 2249841356901999520}
   gearDisplayText: {fileID: 4080326881740503126}
 --- !u!1 &8807239385848074788
 GameObject:
@@ -3258,7 +3257,7 @@ GameObject:
   - component: {fileID: 3972416080775275400}
   - component: {fileID: 835788698413423362}
   - component: {fileID: 161087514150961505}
-  - component: {fileID: 5971024594580924950}
+  - component: {fileID: 2336932754005357640}
   m_Layer: 0
   m_Name: GearTrackerPlate
   m_TagString: Untagged
@@ -3387,7 +3386,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &5971024594580924950
+--- !u!114 &2336932754005357640
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3396,10 +3395,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8870065767103121203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1b1d2a11c460a74e9d0290cf9f500f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0dedc079019580940acd73badfdb3ade, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BasicTextTrackerGear
-  GearChannel: {fileID: 11400000, guid: 0627dd66077facd49aea29d82004b195, type: 2}
+  m_EditorClassIdentifier: Assembly-CSharp::RPMGaugeScript
+  gaugeNeedle: {fileID: 0}
+  minAngle: 0
+  maxAngle: 0
+  engine: {fileID: 0}
+  GearBox: {fileID: 2249841356901999520}
   gearDisplayText: {fileID: 161087514150961505}
 --- !u!1 &8955238058924125488
 GameObject:
@@ -3546,8 +3549,6 @@ MonoBehaviour:
   MaxRPM: 7000
   RPMResponseSpeed: 3
   RPMDecaySpeed: 5
-  ChannelEngineRPM: {fileID: 11400000, guid: c63e24f3492a7d0418c24c76652dac3a, type: 2}
-  ChannelKMH: {fileID: 11400000, guid: 9ccbd99ca1ba69e43b3d77c7514e82a6, type: 2}
 --- !u!114 &5444372402969058925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3660,7 +3661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.10492
+      value: 0.878
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3668,7 +3669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.60194
+      value: -1.638
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3746,7 +3747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.67708
+      value: -0.904
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3754,7 +3755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.60194
+      value: -1.638
       objectReference: {fileID: 0}
     - target: {fileID: 5609386984934700314, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3828,7 +3829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.70508
+      value: -0.932
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3836,7 +3837,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.41206
+      value: 1.376
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3914,7 +3915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.17592
+      value: 0.949
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3922,7 +3923,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.41206
+      value: 1.376
       objectReference: {fileID: 0}
     - target: {fileID: 5518852035763004802, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_LocalRotation.w

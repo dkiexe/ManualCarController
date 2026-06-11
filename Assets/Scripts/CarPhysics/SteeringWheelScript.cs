@@ -8,7 +8,7 @@ public class SteeringWheelScript : MonoBehaviour
     [SerializeField] private WheelScript[] RotationWheels;
 
     [Header("Settings")]
-    [SerializeField] private float PhysicslRotationScalar;
+    [SerializeField] private float physicsRotationScalar;
     [SerializeField] private float visualRotationScalar;
     [SerializeField] private float rotationDampMulti;
     [SerializeField] private float maxRotationAngle;
@@ -80,7 +80,7 @@ public class SteeringWheelScript : MonoBehaviour
             WheelCollider wc = RotationWheels[i].wheelCollider;
 
             float currentAngle = wc.steerAngle;
-            float rotationThisFrame = PhysicslRotationScalar * Time.fixedDeltaTime * RotDir;
+            float rotationThisFrame = physicsRotationScalar * Time.fixedDeltaTime * RotDir;
             float nextAngle = currentAngle + rotationThisFrame;
 
             wc.steerAngle = Mathf.Clamp(nextAngle, -maxRotationAngle, maxRotationAngle);
@@ -99,7 +99,7 @@ public class SteeringWheelScript : MonoBehaviour
             }
 
             float OppositeDir = Mathf.Sign(wc.steerAngle) * -1;
-            float rotationThisFrame = PhysicslRotationScalar * rotationDampMulti * Time.fixedDeltaTime * OppositeDir;
+            float rotationThisFrame = physicsRotationScalar * rotationDampMulti * Time.fixedDeltaTime * OppositeDir;
             float nextAngle = wc.steerAngle + rotationThisFrame;
 
 
