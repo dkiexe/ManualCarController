@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BrakesScript : MonoBehaviour
@@ -11,10 +12,21 @@ public class BrakesScript : MonoBehaviour
     
     private float targetDeceleration = 9.81f; // ~1g
 
+    public float BrakeForce_t { get; private set; }
+
+    private static List<BrakesScript> instances = new List<BrakesScript>();
+
+    private void OnEnable()
+    {
+        instances.Add(this);
+    }
+
     private void FixedUpdate()
     {
         float NeededBrakeForce_t = CalculateBrakeForce();
-        float BrakeForce_t = GetBrakeForceFromBrakePedal(NeededBrakeForce_t);
+        
+        BrakeForce_t = GetBrakeForceFromBrakePedal(NeededBrakeForce_t); // need domain reload for it not to leek.
+        
         TransferBrakeToWheels(BrakeForce_t);
     }
     private float CalculateBrakeForce()
@@ -29,6 +41,11 @@ public class BrakesScript : MonoBehaviour
 
     private void TransferBrakeToWheels(float BrakeForce_t)
     {
+        foreach (var BrakeScript in instances)
+        {
+            if (BrakeScript.BrakeForce_t > BrakeForce_t) return;
+        }
+
         foreach (WheelScript wheel in BrakeWheels)
         {
             wheel.wheelCollider.brakeTorque = BrakeForce_t;

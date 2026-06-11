@@ -21,16 +21,16 @@ public class PedalScript : MonoBehaviour
     private bool IsOnCooldown;
 
     // Class Properties
-    internal float MaxPedalPressure { get; private set; }
-    internal float InputPedalPressure { get; private set; }
-    internal float PedalPressure => MaxPedalPressure * (InputPedalPressure + ConstMinPressure);
+    public float MaxPedalPressure { get; private set; }
+    public float InputPedalPressure { get; private set; }
+    public float PedalPressure => MaxPedalPressure * (InputPedalPressure + ConstMinPressure);
 
     private void OnEnable()
     {
         playerPress.Enable();
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         MaxPedalPressure = Mathf.Clamp01(ConstMinPressure + MaxInputPedalPressure);
         if (MaxPedalPressure < 1f)
@@ -39,7 +39,7 @@ public class PedalScript : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (playerPress.IsPressed() && !IsOnCooldown)
         {
@@ -83,7 +83,7 @@ public class PedalScript : MonoBehaviour
 
     public void AssignPedalCooldown(float time)
     {
-        AwaitPedalCooldown(time);
+        StartCoroutine(AwaitPedalCooldown(time));
     }
 
     private IEnumerator AwaitPedalCooldown(float time)

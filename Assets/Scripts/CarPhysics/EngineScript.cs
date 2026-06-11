@@ -93,8 +93,6 @@ public class EngineScript : MonoBehaviour
 
         TargetEngineRPM_t = Mathf.Clamp(TargetEngineRPM_t, MinRPM, MaxRPM);
 
-        TargetEngineRPM_t = TargetEngineRPM_t * (1 - ClutchPedal.PedalPressure);
-
         return Mathf.Lerp(
             EngineRPM,
             TargetEngineRPM_t,
