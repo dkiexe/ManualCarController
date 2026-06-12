@@ -5,7 +5,7 @@ public class HandBrakeScript : PedalScript
 {
     [Header("References")]
     [SerializeField] private Image HandBrakeIcon;
-    [SerializeField] private WheelCollider[] HandBrakeWheels;
+    [field: SerializeField] public WheelCollider[] HandBrakeWheels { get; private set; }
 
     [Header("Slide Settings")]
     [SerializeField, Range(0, 1)] private float sideStiffnessReduction;
