@@ -1472,7 +1472,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d4ceaf690f9ae4e82b35cd4daa3ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  driftThreshold: 0.4
+  driftAudioSorce: {fileID: 8034202746426970563}
+  driftAudioClips:
+  - {fileID: 8300000, guid: d2125c8463636434bbdfd754ac849a7d, type: 3}
+  - {fileID: 8300000, guid: d2f759a59459617429b7eb3edaa7194d, type: 3}
+  driftThreshold: 0.6
 --- !u!1 &4665985573191603122
 GameObject:
   m_ObjectHideFlags: 0

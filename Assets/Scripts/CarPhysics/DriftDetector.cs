@@ -3,9 +3,12 @@ using UnityEngine;
 [RequireComponent(typeof(HandBrakeScript))]
 public class DriftDetector : MonoBehaviour
 {
+    [SerializeField] private AudioSource driftAudioSorce;
+    [SerializeField] private AudioClip[] driftAudioClips;
     [SerializeField] private float driftThreshold = 0.4f;
 
     private bool isDrifting;
+    private bool wasDrifting;
     private float maxLateralSlip;
     private HandBrakeScript hBrakeScript;
     private WheelCollider[] wheels;
@@ -32,6 +35,13 @@ public class DriftDetector : MonoBehaviour
 
         isDrifting = maxLateralSlip > driftThreshold;
 
-        //Debug.Log(isDrifting);
+        if (isDrifting && !wasDrifting)
+        {
+            AudioClip randAudioClip = driftAudioClips[
+                    (int)Random.Range(minInclusive : 0, maxInclusive: driftAudioClips.Length)
+                ];
+            driftAudioSorce.PlayOneShot(randAudioClip);
+        }
+        wasDrifting = isDrifting;
     }
 }
