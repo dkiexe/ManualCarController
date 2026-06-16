@@ -66,8 +66,8 @@ public class BoosterScript : MonoBehaviour
     private void DisplayNewBoostZone()
     {
         float t = Mathf.InverseLerp(engine.minRPM, engine.maxRPM, bestShiftRPM);
-        float rotationAngle = Mathf.Lerp(BoostZoneIndicatorMaxVal, BoostZoneIndicatorMinVal, t);
-        BoostZoneIndicator.transform.Rotate(Vector3.forward * rotationAngle);
+        float rotatioZ = Mathf.Lerp(BoostZoneIndicatorMaxVal, BoostZoneIndicatorMinVal, t);
+        BoostZoneIndicator.transform.rotation = Quaternion.Euler(Vector3.back * rotatioZ);
         BoostZoneIndicator.gameObject.SetActive(true);
     }
 
