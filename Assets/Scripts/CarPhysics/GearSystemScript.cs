@@ -23,6 +23,7 @@ public class GearSystemScript : MonoBehaviour
     internal int GearCount => gearRatios.Length;
     internal int currentGearIndex => gearIndex;
     internal bool InNeutral => gearIndex == 0;
+    internal bool InFirst => gearIndex == 1;
 
 
     // Unity Methods
@@ -60,6 +61,7 @@ public class GearSystemScript : MonoBehaviour
         if (context.performed)
         {
             ShiftToNeutral();
+            ClutchPedal.ImitatePress();
         }
     }
 

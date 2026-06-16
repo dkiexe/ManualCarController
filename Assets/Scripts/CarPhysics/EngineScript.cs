@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class EngineScript : MonoBehaviour
@@ -11,7 +10,7 @@ public class EngineScript : MonoBehaviour
     [SerializeField] internal WheelScript[] ForceWheels;
 
     [Header("Engine Settings")]
-    [SerializeField] private AnimationCurve RPM_TO_MaxTorqueGraph;
+    [SerializeField] internal AnimationCurve RPM_TO_MaxTorqueGraph;
     [SerializeField] private float EngineHP;
     [SerializeField] private int MaxKMH;
     [SerializeField] private int MinRPM;
@@ -23,12 +22,10 @@ public class EngineScript : MonoBehaviour
     public float KMH { get; private set;  }
     public float MaxSpeedKMH { get; private set; }
     public float EngineRPM { get; private set; }
+    public float MaxTorque { get; private set; }
 
     public float minRPM => MinRPM;
     public float maxRPM => MaxRPM;
-
-    // Private Fields.
-    private float MaxTorque;
 
     private void Start()
     {
@@ -48,7 +45,7 @@ public class EngineScript : MonoBehaviour
         // ****DrivePhysics****
         float EngineTorque_t = 0;
 
-        if (ClutchPedal.PedalPressure != 1)
+        if (GearBox.InFirst || (ClutchPedal.PedalPressure == 0 && !GearBox.InNeutral))
         {
             float LoadRPM = GetWheelLoadRPM();
             EngineRPM = ConvertLoadToEngineRPM(LoadRPM);

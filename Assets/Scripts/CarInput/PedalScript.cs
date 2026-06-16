@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -24,6 +25,8 @@ public class PedalScript : MonoBehaviour
     public float MaxPedalPressure { get; private set; }
     public float InputPedalPressure { get; private set; }
     public float PedalPressure => MaxPedalPressure * (InputPedalPressure + ConstMinPressure);
+
+    internal event Action<InputAction.CallbackContext> OnImitatedPress;
 
     private void OnEnable()
     {
@@ -79,6 +82,7 @@ public class PedalScript : MonoBehaviour
     {
         ApplyPressure();
         if (DampenTimeElapsed != 0) DampenTimeElapsed = 0;
+        OnImitatedPress?.Invoke(default);
     }
 
     public void AssignPedalCooldown(float time)
