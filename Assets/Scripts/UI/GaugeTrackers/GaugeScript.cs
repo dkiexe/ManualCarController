@@ -1,10 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Utils;
 
 public class GaugeScript : MonoBehaviour
 {
     [SerializeField] private GameObject gaugeNeedle;
     [SerializeField] private float minAngle;
     [SerializeField] private float maxAngle;
+    [SerializeField] SerializedDict<int, float> GaugePointToRotation;
 
     protected void UpdateNeedle(float minVal, float maxVal, float currVal)
     {
