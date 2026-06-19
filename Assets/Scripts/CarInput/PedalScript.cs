@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 public class PedalScript : MonoBehaviour
 {
     [Header("Pedal Settings")]
+    [SerializeField] private IgnitionScript ignition;
+    [SerializeField] private bool ignoreIgnition = false;
     [SerializeField] private float ConstMinPressure = 0f;
     [SerializeField] private float InputPressureRate = 0.1f;
     [SerializeField] private float MaxInputPedalPressure = 1f; // Note. maximum pressure a PLAYER can inflict on the pedal using input
@@ -19,7 +21,6 @@ public class PedalScript : MonoBehaviour
 
     // Class Private Fields
     private float DampenTimeElapsed = 0f;
-    private bool IsOnCooldown;
 
     // Class Properties
     public float MaxPedalPressure { get; private set; }
@@ -44,7 +45,9 @@ public class PedalScript : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (playerPress.IsPressed() && !IsOnCooldown)
+        bool ignitionModifier = ignoreIgnition ? true : ignition.isIgnitionOn;
+        
+        if (playerPress.IsPressed() && ignitionModifier)
         {
             ApplyPressure();
             if (DampenTimeElapsed != 0) DampenTimeElapsed = 0;
@@ -83,18 +86,6 @@ public class PedalScript : MonoBehaviour
         ApplyPressure();
         if (DampenTimeElapsed != 0) DampenTimeElapsed = 0;
         OnImitatedPress?.Invoke(default);
-    }
-
-    public void AssignPedalCooldown(float time)
-    {
-        StartCoroutine(AwaitPedalCooldown(time));
-    }
-
-    private IEnumerator AwaitPedalCooldown(float time)
-    {
-        IsOnCooldown = true;
-        yield return new WaitForSeconds(time);
-        IsOnCooldown = false;
     }
 
     private void ApplyPressure() => InputPedalPressure = Mathf.Min(

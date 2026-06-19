@@ -8,7 +8,7 @@ public class SpeedGaugeScript : GaugeScript
     {
         if (engine != null)
         {
-            UpdateNeedle(0, engine.MaxSpeedKMH, engine.KMH);
+            MoveNeedle(engine.KMH);
         }
     }
 }

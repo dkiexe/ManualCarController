@@ -4,6 +4,7 @@ public class EngineScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody rb;
+    [SerializeField] internal IgnitionScript ignition;
     [SerializeField] internal GearSystemScript GearBox;
     [SerializeField] private PedalScript GasPedal;
     [SerializeField] internal PedalScript ClutchPedal;
@@ -33,14 +34,16 @@ public class EngineScript : MonoBehaviour
             (GearBox.GetGearRatio(GearBox.GearCount - 1) * GearBox.finalDrive * 60) * 3.6);
 
         MaxTorque = (EngineHP * 7127) / MaxRPM;
-        
-        EngineRPM = MinRPM;
+
+        if (ignition.isIgnitionOn) EngineRPM = MinRPM;
     }
 
     private void FixedUpdate()
     {
         // ****GlobalPhysics****
         KMH = CalculateKMH();
+
+        if (!ignition.isIgnitionOn) return;
 
         // ****DrivePhysics****
         float EngineTorque_t = 0;

@@ -745,7 +745,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2438154954208035303, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: m_LinearDamping
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3210393829679351143, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: GaugePointToRotation.ItemRecords.Array.data[4].value
+      value: -89.2
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5444372402969058925, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

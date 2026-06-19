@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
-using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
-using static UnityEngine.Audio.ControlContext;
 
 [RequireComponent(typeof(EngineScript))]
 public class BoosterScript : MonoBehaviour

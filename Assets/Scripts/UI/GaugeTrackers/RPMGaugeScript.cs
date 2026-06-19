@@ -20,7 +20,7 @@ public class RPMGaugeScript : GaugeScript
 
         if (engine != null)
         {
-            UpdateNeedle(engine.minRPM, engine.maxRPM, engine.EngineRPM);
+            MoveNeedle(engine.EngineRPM);
         }
     }
 

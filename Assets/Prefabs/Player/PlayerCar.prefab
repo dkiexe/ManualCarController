@@ -33,6 +33,7 @@ Transform:
   - {fileID: 8902754242204144652}
   - {fileID: 3863523310635681044}
   - {fileID: 1761742759359823248}
+  - {fileID: 3222738377236695677}
   - {fileID: 6191555376862277279}
   - {fileID: 912371343815839660}
   - {fileID: 52949084208710222}
@@ -639,7 +640,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: a30dc1c55baba6d4d8aa63d87dd1f316, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
@@ -813,11 +814,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f6712bf657df854291a460f19135ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedGaugeScript
+  needleSpeed: 5
   gaugeNeedle: {fileID: 983287529952536854}
-  minAngle: 0
-  maxAngle: -201
   GaugePointToRotation:
-    ItemRecords: []
+    ItemRecords:
+    - key: 0
+      value: 0
+    - key: 40
+      value: -22.88
+    - key: 70
+      value: -44.08
+    - key: 110
+      value: -67.8
+    - key: 150
+      value: -89.2
+    - key: 190
+      value: -110.4
+    - key: 220
+      value: -131.7
+    - key: 260
+      value: -155.3
+    - key: 300
+      value: -176.5
+    - key: 340
+      value: -200
   engine: {fileID: 7654112353132728607}
 --- !u!1 &3109635436201021653
 GameObject:
@@ -972,6 +992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  ignition: {fileID: 7809907408629742018}
+  ignoreIgnition: 1
   ConstMinPressure: 0
   InputPressureRate: 10
   MaxInputPedalPressure: 1
@@ -1092,6 +1114,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad0ee4d334e1f7641a6ab949b51759c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  ignition: {fileID: 7809907408629742018}
+  ignoreIgnition: 1
   ConstMinPressure: 0
   InputPressureRate: 1
   MaxInputPedalPressure: 1
@@ -1160,6 +1184,70 @@ MonoBehaviour:
   - {fileID: 8300000, guid: d2125c8463636434bbdfd754ac849a7d, type: 3}
   - {fileID: 8300000, guid: d2f759a59459617429b7eb3edaa7194d, type: 3}
   driftThreshold: 0.6
+--- !u!1 &4169783908142408962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3222738377236695677}
+  - component: {fileID: 7809907408629742018}
+  m_Layer: 0
+  m_Name: Ignition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3222738377236695677
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169783908142408962}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4922170374542132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7809907408629742018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4169783908142408962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a032a6a6281c6043a1a6f81e5305473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IgnitionScript
+  <ignitionState>k__BackingField: 1
+  idleAudioSource: {fileID: 7808818411629671422}
+  startUpAudioClip: {fileID: 8300000, guid: e30adf9f50b0e114bb358d5dabbca753, type: 3}
+  keyInput:
+    m_Name: Key Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 37674167-8e5d-4d14-ae7d-37885c1f8bce
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 40982682-f405-48f3-8380-bef5403da6e3
+      m_Path: <Keyboard>/c
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Key Input
+      m_Flags: 0
+    m_Flags: 0
 --- !u!1 &4665985573191603122
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,6 +2167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  ignition: {fileID: 7809907408629742018}
+  ignoreIgnition: 0
   ConstMinPressure: 0
   InputPressureRate: 100
   MaxInputPedalPressure: 1
@@ -2109,81 +2199,6 @@ MonoBehaviour:
       m_Action: Player Press
       m_Flags: 0
     m_Flags: 0
---- !u!1 &6690483363086766235
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7419182636241476278}
-  - component: {fileID: 206443237516755343}
-  - component: {fileID: 688115431306459195}
-  m_Layer: 0
-  m_Name: RPM_RedZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &7419182636241476278
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6690483363086766235}
-  m_LocalRotation: {x: -0, y: -0, z: -0.0012932667, w: -0.9999992}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7980094334031998866}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.148}
-  m_AnchorMin: {x: 0.49278077, y: 0.21400002}
-  m_AnchorMax: {x: 0.52334225, y: 0.30900002}
-  m_AnchoredPosition: {x: 109.59938, y: 2.375}
-  m_SizeDelta: {x: 142.6082, y: 66.2771}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &206443237516755343
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6690483363086766235}
-  m_CullTransparentMesh: 1
---- !u!114 &688115431306459195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6690483363086766235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 09037c6a8ebfcf6479c75a1518c118d6, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6881505238838237933
 GameObject:
   m_ObjectHideFlags: 0
@@ -2839,6 +2854,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047b0b314ecb3af498e4d357c7e5a9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PedalScript
+  ignition: {fileID: 7809907408629742018}
+  ignoreIgnition: 0
   ConstMinPressure: 0.1
   InputPressureRate: 0.6
   MaxInputPedalPressure: 0.9
@@ -2980,81 +2997,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &8126639692164865704
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 441899760393596970}
-  - component: {fileID: 7557446346326561795}
-  - component: {fileID: 4070657424094564377}
-  m_Layer: 0
-  m_Name: RPM_BoostZone
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &441899760393596970
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8126639692164865704}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7980094334031998866}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.51078075, y: 0.22425012}
-  m_AnchorMax: {x: 0.51078075, y: 0.22425012}
-  m_AnchoredPosition: {x: 0.30298042, y: -0.081451416}
-  m_SizeDelta: {x: 158, y: 100}
-  m_Pivot: {x: -0.18983245, y: 0.4502274}
---- !u!222 &7557446346326561795
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8126639692164865704}
-  m_CullTransparentMesh: 1
---- !u!114 &4070657424094564377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8126639692164865704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.042052314, g: 0.6862587, b: 0.990566, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 09037c6a8ebfcf6479c75a1518c118d6, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8141863532554594537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3156,11 +3098,6 @@ MonoBehaviour:
   RotationWheels:
   - {fileID: 8027523237925332412}
   - {fileID: 7890964078158491476}
-  AllWheels:
-  - {fileID: 8027523237925332412}
-  - {fileID: 7890964078158491476}
-  - {fileID: 4263901284163591465}
-  - {fileID: 5622691180546095390}
   physicsRotationScalar: 50
   visualRotationScalar: 50
   rotationDampMulti: 2
@@ -3282,8 +3219,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7419182636241476278}
-  - {fileID: 441899760393596970}
   - {fileID: 4735830699742506499}
   - {fileID: 5629058051872100321}
   m_Father: {fileID: 3863523310635681044}
@@ -3343,11 +3278,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0dedc079019580940acd73badfdb3ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RPMGaugeScript
+  needleSpeed: 5
   gaugeNeedle: {fileID: 8029828374993004210}
-  minAngle: -15
-  maxAngle: -201
   GaugePointToRotation:
     ItemRecords:
+    - key: 0
+      value: 0
     - key: 1000
       value: -24.6
     - key: 2000
@@ -3578,8 +3514,6 @@ GameObject:
   m_Component:
   - component: {fileID: 912371343815839660}
   - component: {fileID: 7654112353132728607}
-  - component: {fileID: 5444372402969058925}
-  - component: {fileID: 742721593199235660}
   m_Layer: 0
   m_Name: Engine
   m_TagString: Untagged
@@ -3615,6 +3549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 2438154954208035303}
+  ignition: {fileID: 7809907408629742018}
   GearBox: {fileID: 2249841356901999520}
   GasPedal: {fileID: 1055151374559681108}
   ClutchPedal: {fileID: 6635414504707694542}
@@ -3714,41 +3649,6 @@ MonoBehaviour:
   MaxRPM: 7000
   RPMResponseSpeed: 2
   RPMDecaySpeed: 5
---- !u!114 &5444372402969058925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8955238058924125488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f8410bc536cbe541816766b31749e04, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EngineAutoGearShift
-  minBluelineRPM: 900
-  maxBluelineRPM: 1500
-  AutoShiftUpDelay: 1
-  minRedlineRPM: 6000
-  maxRedlineRPM: 7000
-  AutoShiftDownDelay: 0.01
---- !u!114 &742721593199235660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8955238058924125488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d64c340ab31ae94458d0604b51cdd992, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  BoostZoneIndicator: {fileID: 4070657424094564377}
-  BoostZoneIndicatorMinVal: 0
-  BoostZoneIndicatorMaxVal: -170
-  RPMSearchLimit: 6000
-  RPMSearchJump: 100
 --- !u!1001 &2746459160372392775
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3757,6 +3657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5183011598014438175}
     m_Modifications:
+    - target: {fileID: 1258271294037983318, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1258271294037983318, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_SuspensionSpring.damper
       value: 7000
@@ -3844,6 +3748,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5183011598014438175}
     m_Modifications:
     - target: {fileID: 1258271294037983318, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258271294037983318, guid: c76e3e526a5fe0c43b9ad6714e398beb, type: 3}
       propertyPath: m_SuspensionSpring.damper
       value: 7000
       objectReference: {fileID: 0}
@@ -3930,6 +3838,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 5183011598014438175}
     m_Modifications:
     - target: {fileID: 1168730294788264142, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168730294788264142, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_SuspensionSpring.damper
       value: 7000
       objectReference: {fileID: 0}
@@ -4015,6 +3927,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5183011598014438175}
     m_Modifications:
+    - target: {fileID: 1168730294788264142, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
+      propertyPath: m_WheelDampingRate
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1168730294788264142, guid: eaf1270bdcb44fa4cbd839e8ea04617c, type: 3}
       propertyPath: m_SuspensionSpring.damper
       value: 7000

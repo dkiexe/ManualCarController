@@ -13,7 +13,7 @@ namespace Assets.Scripts.Utils
         {
             Dictionary<T1, T2> newDict = new Dictionary<T1, T2>();
 
-            for(int i = 0; i <= ItemRecords.Length; i++)
+            for(int i = 0; i < ItemRecords.Length; i++)
             {
                 SerializedDictRecord<T1, T2> record = ItemRecords[i];
 
