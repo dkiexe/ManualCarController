@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -24,6 +23,8 @@ public class GearSystemScript : MonoBehaviour
     internal int currentGearIndex => gearIndex;
     internal bool InNeutral => gearIndex == 0;
     internal bool InFirst => gearIndex == 1;
+
+    internal bool InLast => gearIndex == GearCount - 1;
 
 
     // Unity Methods

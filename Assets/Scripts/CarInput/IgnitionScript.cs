@@ -10,6 +10,7 @@ public class IgnitionScript : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource idleAudioSource;
     [SerializeField] private AudioClip startUpAudioClip;
+    [SerializeField] private AudioClip engineShutoffClip;
 
     [Header("Player Input")]
     [SerializeField] internal InputAction keyInput;
@@ -33,22 +34,34 @@ public class IgnitionScript : MonoBehaviour
         {
             int StateInex = (int)ignitionState;
 
-            ignitionState = (IgnitionState) ((StateInex + 1) % 2);
+            ignitionState = (IgnitionState)((StateInex + 1) % 2);
 
-            if (ignitionState == IgnitionState.IgnitionOn)
-            {
-                playStartUpSounds();
-            }
-            else
-            {
-                stopIdleSounds();
-            }
+            ManageCarIdleSounds();
         }
+    }
+
+    private void ManageCarIdleSounds()
+    {
+        if (ignitionState == IgnitionState.IgnitionOn)
+        {
+            playStartUpSounds();
+        }
+        else
+        {
+            stopIdleSounds();
+            idleAudioSource.PlayOneShot(engineShutoffClip, 3f);
+        }
+    }
+
+    internal void StopIgniton()
+    {
+        ignitionState = IgnitionState.IgnitionOff;
+        ManageCarIdleSounds();
     }
 
     private void playStartUpSounds()
     {
-        idleAudioSource.PlayOneShot(startUpAudioClip);
+        idleAudioSource.PlayOneShot(startUpAudioClip, 3f);
         StartCoroutine(ScheduleIdleSounds(startUpAudioClip.length));
     }
 

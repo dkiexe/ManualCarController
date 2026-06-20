@@ -3,7 +3,7 @@ using UnityEngine;
 public class EngineScript : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Rigidbody rb;
+    [SerializeField] internal Rigidbody rb;
     [SerializeField] internal IgnitionScript ignition;
     [SerializeField] internal GearSystemScript GearBox;
     [SerializeField] private PedalScript GasPedal;
@@ -43,7 +43,15 @@ public class EngineScript : MonoBehaviour
         // ****GlobalPhysics****
         KMH = CalculateKMH();
 
-        if (!ignition.isIgnitionOn) return;
+        if (!ignition.isIgnitionOn)
+        {
+            EngineRPM = Mathf.Lerp(
+                EngineRPM,
+                0,
+                Time.fixedDeltaTime * RPMDecaySpeed
+            );
+            return;
+        }
 
         // ****DrivePhysics****
         float EngineTorque_t = 0;

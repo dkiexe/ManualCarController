@@ -745,20 +745,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2438154954208035303, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: m_LinearDamping
-      value: 0.1
+    - target: {fileID: 7809907408629742018, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: engineShutoffClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2b645dc0ac091c447babe32a10036785, type: 3}
+    - target: {fileID: 8864623937357371712, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: RPMGaugeImage
+      value: 
+      objectReference: {fileID: 2129439640}
+    - target: {fileID: 8864623937357371712, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: GlobalShutOffDelay
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3210393829679351143, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
-      propertyPath: GaugePointToRotation.ItemRecords.Array.data[4].value
-      value: -89.2
+    - target: {fileID: 8864623937357371712, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: ShutOffRedlineDelay
+      value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5444372402969058925, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+    - target: {fileID: 8864623937357371712, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+      propertyPath: ShutOffBluelineDelay
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+--- !u!114 &2129439640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2473529726101224649, guid: b29c73a667d01ab4cb646f523054c034, type: 3}
+  m_PrefabInstance: {fileID: 2106576152}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!4 &259541758250655575 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2144851055594970825, guid: ee8c067ab2a649c45883101c920ca788, type: 3}
