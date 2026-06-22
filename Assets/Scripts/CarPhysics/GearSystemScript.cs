@@ -9,6 +9,7 @@ public class GearSystemScript : MonoBehaviour
     [Header("Gear Settings")]
     [SerializeField] private float[] gearRatios;
     [SerializeField] private float finalDriveRatio;
+    [SerializeField] private float reverseRatio;
 
     [Header("Variables")]
     [SerializeField] private int gearIndex = 0;
@@ -17,14 +18,14 @@ public class GearSystemScript : MonoBehaviour
     [SerializeField] private InputAction shiftToNeutralInput;
 
     // Class Properties
-    internal float currentGearRatio => gearRatios[gearIndex];
+    internal float currentGearRatio => gearIndex == -1 ? reverseRatio: gearRatios[gearIndex];
     internal float finalDrive => finalDriveRatio;
     internal int GearCount => gearRatios.Length;
     internal int currentGearIndex => gearIndex;
     internal bool InNeutral => gearIndex == 0;
     internal bool InFirst => gearIndex == 1;
-
     internal bool InLast => gearIndex == GearCount - 1;
+    internal bool InReverse => gearIndex == -1;
 
 
     // Unity Methods
@@ -54,6 +55,7 @@ public class GearSystemScript : MonoBehaviour
     {
         if (context.performed)
         {
+            if ( gearIndex == -1 ) gearIndex = 0;
             ShiftUP();
         }
     }
@@ -71,9 +73,21 @@ public class GearSystemScript : MonoBehaviour
         gearIndex = 0;
     }
 
+    internal void ShiftToReverse()
+    {
+        gearIndex = -1;
+    }
+
     internal void ShiftUP() 
     {
-        gearIndex = Mathf.Min(gearIndex + 1, gearRatios.Length - 1);
+        if (InReverse)
+        {
+            gearIndex = 1; // shifting to first.
+        }
+        else
+        {
+            gearIndex = Mathf.Min(gearIndex + 1, gearRatios.Length - 1);
+        }
     }
 
     internal void ShiftDown()

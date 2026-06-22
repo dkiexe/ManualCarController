@@ -51,6 +51,7 @@ Transform:
   - {fileID: 7994987725717162441}
   - {fileID: 429196380686381243}
   - {fileID: 936097897876888001}
+  - {fileID: 8694295541036928059}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2438154954208035303
@@ -1369,7 +1370,7 @@ MonoBehaviour:
   <ignitionState>k__BackingField: 1
   idleAudioSource: {fileID: 7808818411629671422}
   startUpAudioClip: {fileID: 8300000, guid: e30adf9f50b0e114bb358d5dabbca753, type: 3}
-  engineShutoffClip: {fileID: 0}
+  engineShutoffClip: {fileID: 8300000, guid: 2b645dc0ac091c447babe32a10036785, type: 3}
   keyInput:
     m_Name: Key Input
     m_Type: 0
@@ -1550,6 +1551,7 @@ MonoBehaviour:
   - 1
   - 0.82
   finalDriveRatio: 3.5
+  reverseRatio: 4
   gearIndex: 0
   shiftToNeutralInput:
     m_Name: Shift To Neutral Input
@@ -2465,6 +2467,154 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &7226794007436929798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8694295541036928059}
+  - component: {fileID: 6839023096563068037}
+  - component: {fileID: 3745569454660409538}
+  - component: {fileID: 7841659663673213873}
+  - component: {fileID: 3332264181947354115}
+  m_Layer: 0
+  m_Name: CinemachineCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8694295541036928059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226794007436929798}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.16018154, y: 0.0013708471, z: -0.00022245196, w: 0.9870866}
+  m_LocalPosition: {x: -0.019999506, y: 2.4, z: -7.200001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4922170374542132}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6839023096563068037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226794007436929798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 0
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 4922170374542132}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 60.000004
+    OrthographicSize: 5
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!114 &3745569454660409538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226794007436929798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625c14eee3ad46c99df7c7c891ef668a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineThirdPersonFollow
+  Damping: {x: 0.1, y: 0.5, z: 0.3}
+  ShoulderOffset: {x: -0.02, y: 2, z: -5.2}
+  VerticalArmLength: 0.4
+  CameraSide: 1
+  CameraDistance: 2
+  AvoidObstacles:
+    Enabled: 1
+    CollisionFilter:
+      serializedVersion: 2
+      m_Bits: 1
+    IgnoreTag: 
+    CameraRadius: 0.2
+    DampingIntoCollision: 0
+    DampingFromCollision: 0.5
+--- !u!114 &7841659663673213873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226794007436929798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.17343763, y: 0.2}
+    HardLimits:
+      Enabled: 1
+      Size: {x: 0.22083344, y: 0.5722225}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 0.5, y: 0.5}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &3332264181947354115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226794007436929798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 816ea062a596589449e89a2f13df661f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  reverseSholderOffsetZ: 8
+  camFlipSpeed: 3
+  GearBox: {fileID: 2249841356901999520}
 --- !u!1 &7448263974618330258
 GameObject:
   m_ObjectHideFlags: 0
@@ -3689,6 +3839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   rb: {fileID: 2438154954208035303}
+  brakes: {fileID: 8169829780071878930}
   ignition: {fileID: 7809907408629742018}
   GearBox: {fileID: 2249841356901999520}
   GasPedal: {fileID: 1055151374559681108}
@@ -3787,6 +3938,7 @@ MonoBehaviour:
   MaxKMH: 300
   MinRPM: 900
   MaxRPM: 7000
+  MaxRPM_Reverse: 4500
   RPMResponseSpeed: 2
   RPMDecaySpeed: 5
 --- !u!114 &8864623937357371712
@@ -3802,10 +3954,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   RPM_TEXT: {fileID: 3047030013094430548}
-  RPMGaugeImage: {fileID: 0}
-  GlobalShutOffDelay: 0
-  ShutOffRedlineDelay: 0
-  ShutOffBluelineDelay: 0
+  RPMGaugeImage: {fileID: 2473529726101224649}
+  GlobalShutOffDelay: 1
+  ShutOffRedlineDelay: 2
+  ShutOffBluelineDelay: 3
   shiftUpColor: {r: 1, g: 0, b: 0, a: 1}
   shiftDownColor: {r: 0, g: 0.66519666, b: 1, a: 1}
   shiftUpText: Shift UP!

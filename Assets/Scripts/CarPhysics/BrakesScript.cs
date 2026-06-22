@@ -5,11 +5,11 @@ public class BrakesScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private PedalScript BrakePedal;
+    [SerializeField] internal PedalScript BrakePedal;
     [SerializeField] internal WheelScript[] BrakeWheels;
     [SerializeField] private float BreakForceScalar = 1f;
-    
-    
+
+    private bool SupressBrakes;
     private float targetDeceleration = 9.81f; // ~1g
 
     public float BrakeForce_t { get; private set; }
@@ -48,7 +48,16 @@ public class BrakesScript : MonoBehaviour
 
         foreach (WheelScript wheel in BrakeWheels)
         {
-            wheel.wheelCollider.brakeTorque = BrakeForce_t;
+            if (SupressBrakes)
+            {
+                wheel.wheelCollider.brakeTorque = 0;
+            }
+            else
+            {
+                wheel.wheelCollider.brakeTorque = BrakeForce_t;
+            }
         }
     }
+
+    public void ToggleBrakeSuppression() => SupressBrakes = !SupressBrakes;
 }

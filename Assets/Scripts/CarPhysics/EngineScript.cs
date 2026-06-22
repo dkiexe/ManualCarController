@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EngineScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] internal Rigidbody rb;
+    [SerializeField] private BrakesScript brakes;
     [SerializeField] internal IgnitionScript ignition;
     [SerializeField] internal GearSystemScript GearBox;
     [SerializeField] private PedalScript GasPedal;
@@ -16,6 +18,7 @@ public class EngineScript : MonoBehaviour
     [SerializeField] private int MaxKMH;
     [SerializeField] private int MinRPM;
     [SerializeField] private int MaxRPM;
+    [SerializeField] private int MaxRPM_Reverse = 4500;
     [SerializeField] private float RPMResponseSpeed = 1f;
     [SerializeField] private float RPMDecaySpeed = 1f;
 
@@ -28,8 +31,12 @@ public class EngineScript : MonoBehaviour
     public float minRPM => MinRPM;
     public float maxRPM => MaxRPM;
 
+    private PedalControlledAudioSource AS_Throttle = null;
+
     private void Start()
     {
+        GasPedal.gameObject.TryGetComponent<PedalControlledAudioSource>(out AS_Throttle);
+
         MaxSpeedKMH = (float)((maxRPM * 2 * Mathf.PI * ForceWheels[0].wheelCollider.radius) / 
             (GearBox.GetGearRatio(GearBox.GearCount - 1) * GearBox.finalDrive * 60) * 3.6);
 
@@ -50,32 +57,83 @@ public class EngineScript : MonoBehaviour
                 0,
                 Time.fixedDeltaTime * RPMDecaySpeed
             );
+            TransferTorqueToWheels(0);
             return;
+        }
+        else
+        {
+            EngineRPM = Mathf.Clamp(EngineRPM, minRPM, MaxRPM);
         }
 
         // ****DrivePhysics****
+        DriveTrain();
+    }
+
+    private void DriveTrain()
+    {
         float EngineTorque_t = 0;
 
-        if (GearBox.InFirst || (ClutchPedal.PedalPressure == 0 && !GearBox.InNeutral))
+        if (!GearBox.InNeutral)
         {
-            float LoadRPM = GetWheelLoadRPM();
-            EngineRPM = ConvertLoadToEngineRPM(LoadRPM);
-            float MaxTorque_t = ReadMaxTorqueForRPM(EngineRPM);
-            EngineTorque_t = GetEngineTorqueFromThrottle(MaxTorque_t);
+            HandleReverse();
+
+            if (GearBox.InFirst || ClutchPedal.PedalPressure == 0)
+            {
+                float LoadRPM = GetWheelLoadRPM();
+                EngineRPM = ConvertLoadToEngineRPM(LoadRPM);
+                float MaxTorque_t = ReadMaxTorqueForRPM(EngineRPM);
+                EngineTorque_t = GetEngineTorqueFromThrottle(MaxTorque_t);
+            }
+            else // On clutch press Disconnect the Motor from wheels and try to reduce RPM
+            {
+                EngineRPM = Mathf.Lerp(
+                        EngineRPM,
+                        MinRPM * (1 + GasPedal.PedalPressure),
+                        Time.fixedDeltaTime * RPMDecaySpeed
+                    );
+            }
+            TransferTorqueToWheels(EngineTorque_t);
         }
-        else // Disconnect the Motor from wheels and try to reduce RPM
-        {
-            EngineRPM = Mathf.Lerp(
-                    EngineRPM,
-                    MinRPM * (1 + GasPedal.PedalPressure),
-                    Time.fixedDeltaTime * RPMDecaySpeed
-                );
-        }
-        TransferTorqueToWheels(EngineTorque_t);
+        else TransferTorqueToWheels(0);
     }
+
     private float CalculateKMH()
     {
         return rb.linearVelocity.magnitude * 3.6f;
+    }
+
+    private void HandleReverse()
+    {
+        if (!GearBox.InReverse)
+        {
+            if (
+                Mathf.Round(KMH) == 0
+                && brakes.BrakePedal.PedalPressure == 1
+                )
+            {
+                brakes.ToggleBrakeSuppression();
+                if (AS_Throttle != null)
+                {
+                    PedalControlledAudioSource pas = brakes.BrakePedal.gameObject.AddComponent<PedalControlledAudioSource>();
+                    JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(AS_Throttle), pas);
+                    AS_Throttle.enabled = false;
+                }
+                GearBox.ShiftToReverse();
+            }
+        }
+        else
+        {
+            if (!(brakes.BrakePedal.PedalPressure == 1))
+            {
+                brakes.ToggleBrakeSuppression();
+                if (AS_Throttle != null)
+                {
+                    Destroy(brakes.BrakePedal.gameObject.GetComponent<PedalControlledAudioSource>());
+                    AS_Throttle.enabled = true;
+                }
+                GearBox.ShiftUP();
+            }
+        }
     }
 
     private float GetWheelLoadRPM()
@@ -95,14 +153,16 @@ public class EngineScript : MonoBehaviour
             }
         }
         if (totalRPM == 0 && totalWheelsOnGround == 0) return 0;
-        return totalRPM / totalWheelsOnGround;
+        return Mathf.Abs(totalRPM) / totalWheelsOnGround;
     }
     
     private float ConvertLoadToEngineRPM(float LoadRPM)
     {
+        float maxRPM = GearBox.InReverse ? MaxRPM_Reverse : MaxRPM;
+        
         float TargetEngineRPM_t = LoadRPM * GearBox.currentGearRatio * GearBox.finalDrive;
 
-        TargetEngineRPM_t = Mathf.Clamp(TargetEngineRPM_t, MinRPM, MaxRPM);
+        TargetEngineRPM_t = Mathf.Clamp(TargetEngineRPM_t, MinRPM, maxRPM);
 
         return Mathf.Lerp(
             EngineRPM,
@@ -113,12 +173,15 @@ public class EngineScript : MonoBehaviour
 
     private float ReadMaxTorqueForRPM(float RPM_Level)
     {
-        return MaxTorque * RPM_TO_MaxTorqueGraph.Evaluate(RPM_Level / MaxRPM);
+        float maxRPM = GearBox.InReverse ? MaxRPM_Reverse : MaxRPM;
+        return MaxTorque * RPM_TO_MaxTorqueGraph.Evaluate(RPM_Level / maxRPM);
     }
 
     private float GetEngineTorqueFromThrottle(float maxTorque_t)
     {
-        return maxTorque_t * GasPedal.PedalPressure;
+        int reverseCoff = GearBox.InReverse ? -1 : 1;
+        float PedalPressure = GearBox.InReverse ? brakes.BrakePedal.PedalPressure : GasPedal.PedalPressure;
+        return maxTorque_t * PedalPressure * reverseCoff;
     }
 
     private void TransferTorqueToWheels(float engineTorque_t)

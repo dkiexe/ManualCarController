@@ -26,7 +26,12 @@ public class RPMGaugeScript : GaugeScript
 
     private void ChangeGearDisplay()
     {
-        string gearIndexString = currentGearVal == 0? "N" : currentGearVal.ToString();
+        string gearIndexString;
+
+        if (currentGearVal == 0) gearIndexString = "N";
+        else if (currentGearVal == -1) gearIndexString = "R";
+        else gearIndexString = currentGearVal.ToString();
+
         gearDisplayText.text = gearIndexString.ToString();
     }
 }

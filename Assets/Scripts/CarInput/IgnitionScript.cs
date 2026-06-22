@@ -15,6 +15,8 @@ public class IgnitionScript : MonoBehaviour
     [Header("Player Input")]
     [SerializeField] internal InputAction keyInput;
 
+    internal event Action<IgnitionState> OnIgnitionStateChange;
+
     public bool isIgnitionOn => ignitionState == IgnitionState.IgnitionOn;
 
     private void OnEnable()

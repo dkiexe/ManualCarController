@@ -62,6 +62,12 @@ public class EngineMonitor : MonoBehaviour
             return;
         }
 
+        if (engine.GearBox.InReverse)
+        {
+            ClearMonitorText();
+            return;
+        }
+
         if (CheckForShiftUP())
         {
             UpdateMonitorText(shiftUpColor, shiftUpText);
