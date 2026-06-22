@@ -1,5 +1,7 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class EngineScript : MonoBehaviour
 {
@@ -32,10 +34,16 @@ public class EngineScript : MonoBehaviour
     public float maxRPM => MaxRPM;
 
     private PedalControlledAudioSource AS_Throttle = null;
+    private bool isReversing = false;
+
+    private void OnEnable()
+    {
+        ClutchPedal.playerPress.performed += checkReverseExit;
+    }
 
     private void Start()
     {
-        GasPedal.gameObject.TryGetComponent<PedalControlledAudioSource>(out AS_Throttle);
+        GasPedal.gameObject.TryGetComponent(out AS_Throttle);
 
         MaxSpeedKMH = (float)((maxRPM * 2 * Mathf.PI * ForceWheels[0].wheelCollider.radius) / 
             (GearBox.GetGearRatio(GearBox.GearCount - 1) * GearBox.finalDrive * 60) * 3.6);
@@ -69,6 +77,73 @@ public class EngineScript : MonoBehaviour
         DriveTrain();
     }
 
+    private void OnDisable()
+    {
+        ClutchPedal.playerPress.performed -= checkReverseExit;
+    }
+
+    private float CalculateKMH()
+    {
+        return rb.linearVelocity.magnitude * 3.6f;
+    }
+
+    private void HandleReverse()
+    {
+        if (!GearBox.InReverse)
+        {
+            if (
+                Mathf.Round(KMH) == 0
+                && brakes.BrakePedal.PedalPressure == 1
+                )
+            {
+                EnableReverse();
+            }
+        }
+        else
+        {
+            if (!(brakes.BrakePedal.PedalPressure == 1))
+            {
+                DisableReverse();
+            }
+        }
+    }
+
+    private void EnableReverse()
+    {
+        brakes.ToggleBrakeSuppression();
+        if (AS_Throttle != null)
+        {
+            PedalControlledAudioSource pas = brakes.BrakePedal.gameObject.AddComponent<PedalControlledAudioSource>();
+            JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(AS_Throttle), pas);
+            AS_Throttle.enabled = false;
+        }
+        GearBox.ShiftToReverse();
+        isReversing = true;
+    }
+
+    private void DisableReverse(bool addShift = true)
+    {
+        brakes.ToggleBrakeSuppression();
+        if (AS_Throttle != null)
+        {
+            Destroy(brakes.BrakePedal.gameObject.GetComponent<PedalControlledAudioSource>());
+            AS_Throttle.enabled = true;
+        }
+        if (addShift) GearBox.ShiftUP();
+        isReversing = false;
+    }
+    private void checkReverseExit(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            // check if the gearbox moved from reverse but the engine still thinks we are reversing
+            if (!GearBox.InReverse && isReversing)
+            {
+                DisableReverse(false);
+            }
+        }
+    }
+
     private void DriveTrain()
     {
         float EngineTorque_t = 0;
@@ -95,45 +170,6 @@ public class EngineScript : MonoBehaviour
             TransferTorqueToWheels(EngineTorque_t);
         }
         else TransferTorqueToWheels(0);
-    }
-
-    private float CalculateKMH()
-    {
-        return rb.linearVelocity.magnitude * 3.6f;
-    }
-
-    private void HandleReverse()
-    {
-        if (!GearBox.InReverse)
-        {
-            if (
-                Mathf.Round(KMH) == 0
-                && brakes.BrakePedal.PedalPressure == 1
-                )
-            {
-                brakes.ToggleBrakeSuppression();
-                if (AS_Throttle != null)
-                {
-                    PedalControlledAudioSource pas = brakes.BrakePedal.gameObject.AddComponent<PedalControlledAudioSource>();
-                    JsonUtility.FromJsonOverwrite(JsonUtility.ToJson(AS_Throttle), pas);
-                    AS_Throttle.enabled = false;
-                }
-                GearBox.ShiftToReverse();
-            }
-        }
-        else
-        {
-            if (!(brakes.BrakePedal.PedalPressure == 1))
-            {
-                brakes.ToggleBrakeSuppression();
-                if (AS_Throttle != null)
-                {
-                    Destroy(brakes.BrakePedal.gameObject.GetComponent<PedalControlledAudioSource>());
-                    AS_Throttle.enabled = true;
-                }
-                GearBox.ShiftUP();
-            }
-        }
     }
 
     private float GetWheelLoadRPM()

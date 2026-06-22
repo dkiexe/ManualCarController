@@ -33,7 +33,7 @@ public class GearSystemScript : MonoBehaviour
     {
         shiftToNeutralInput.Enable();
 
-        ClutchPedal.playerPress.performed += ShiftUpInputHandler;
+        ClutchPedal.playerPress.performed += ShiftInputHandler;
         shiftToNeutralInput.performed += ShiftNInputHandler;
     }
 
@@ -41,7 +41,7 @@ public class GearSystemScript : MonoBehaviour
     {
         shiftToNeutralInput.Disable();
 
-        ClutchPedal.playerPress.performed -= ShiftUpInputHandler;
+        ClutchPedal.playerPress.performed -= ShiftInputHandler;
         shiftToNeutralInput.performed -= ShiftNInputHandler;
     }
 
@@ -51,14 +51,23 @@ public class GearSystemScript : MonoBehaviour
     }
 
     // Class Methods
-    private void ShiftUpInputHandler(InputAction.CallbackContext context)
+    private void ShiftInputHandler(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            if ( gearIndex == -1 ) gearIndex = 0;
-            ShiftUP();
+            int ShiftDir = (int)context.ReadValue<float>();
+            
+            if (ShiftDir > 0)
+            {
+                ShiftUP();
+            }
+            else
+            {
+                ShiftDown();
+            }
         }
     }
+
     private void ShiftNInputHandler(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -92,7 +101,8 @@ public class GearSystemScript : MonoBehaviour
 
     internal void ShiftDown()
     {
-        gearIndex = Mathf.Max(gearIndex - 1, 0);
+        if (InReverse) return;
+        gearIndex = Mathf.Max(gearIndex - 1, 1);
     }
 
     public float GetGearRatio(int gearIndex) => gearRatios[gearIndex];
