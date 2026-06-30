@@ -3,6 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(HandBrakeScript))]
 public class DriftDetector : MonoBehaviour
 {
+    [SerializeField] private Rigidbody rb;
+    [SerializeField] private TrailRenderer[] tireParticleSystems;
     [SerializeField] private AudioSource driftAudioSorce;
     [SerializeField] private AudioClip[] driftAudioClips;
     [SerializeField] private float driftThreshold = 0.4f;
@@ -17,6 +19,16 @@ public class DriftDetector : MonoBehaviour
     {
         hBrakeScript = GetComponent<HandBrakeScript>();
         wheels = hBrakeScript.HandBrakeWheels;
+    }
+
+    private void Update()
+    {
+        float yawRateDeg = rb.angularVelocity.y * Mathf.Rad2Deg;
+
+        foreach (TrailRenderer tireTrail in tireParticleSystems)
+        {
+            tireTrail.emitting = isDrifting;
+        }
     }
 
     private void FixedUpdate()

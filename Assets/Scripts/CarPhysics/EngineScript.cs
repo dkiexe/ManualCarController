@@ -169,7 +169,15 @@ public class EngineScript : MonoBehaviour
             }
             TransferTorqueToWheels(EngineTorque_t);
         }
-        else TransferTorqueToWheels(0);
+        else
+        {
+            EngineRPM = Mathf.Lerp(
+                EngineRPM,
+                MinRPM * (1 + GasPedal.PedalPressure),
+                Time.fixedDeltaTime * RPMDecaySpeed
+            );
+            TransferTorqueToWheels(0);
+        }
     }
 
     private float GetWheelLoadRPM()
