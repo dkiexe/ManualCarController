@@ -3,16 +3,16 @@
 
 # ManualCarController
 
-This a 3D manual race car controller which would later be used for an adrenaline-pumping racing game, In this project I explore the idea where the car dosen't drive the player but the actual player drives the car meaning, instead of shifting gears for you the car waits for you the to take full control and shift gears correctly to keep the show going!.
+This is a 3D manual race car controller which would later be used for an adrenaline-pumping racing game, In this project I explore the idea where the car doesn't  drive the player, but the actual player drives the car meaning, instead of shifting gears for you the car waits for you the to take full control and shift gears correctly to keep the show going!.
 
 
 ## In this Demo
 
-In this demo you are able to explore the car controls by driving around a race track,  monitor car performance using the currently built UI systems, and get a feel of the idea benind this project.
+In this demo you are able to explore the car controls by driving around a racetrack,  monitor car performance using the currently built UI systems, and get a feel of the idea benind this project.
 
 ## Controls
 
-- C : Engine start / stop, *NOTE!* car spwans with engine off.
+- C : Engine start / stop, *NOTE!* car spawns with engine off.
 - N : Shift to Neutral.
 - W / ⬆️ : Gas Pedal ( use to go forward ).
 - S / ⬇️ : Brake Pedal, once car velocity reaches 0 and the brake is still engauged engine would shift to reverse for convenience. 
