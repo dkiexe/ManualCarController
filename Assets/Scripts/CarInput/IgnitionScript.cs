@@ -1,11 +1,17 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class IgnitionScript : MonoBehaviour
 {
     [field: SerializeField] public IgnitionState ignitionState { get; private set; } = IgnitionState.IgnitionOn;
+
+    [Header("UI Settings && Refrences")]
+    [SerializeField] private Image[] UIGauges;
+    [SerializeField] private TextMeshProUGUI InstructionText;
 
     [Header("Audio")]
     [SerializeField] private AudioSource idleAudioSource;
@@ -23,6 +29,11 @@ public class IgnitionScript : MonoBehaviour
         keyInput.performed += HandleIgnitionInput;
     }
 
+    private void Start()
+    {
+        ManageCarIU();
+    }
+
     private void OnDisable()
     {
         keyInput.performed -= HandleIgnitionInput;
@@ -36,6 +47,7 @@ public class IgnitionScript : MonoBehaviour
 
             ignitionState = (IgnitionState)((StateInex + 1) % 2);
 
+            ManageCarIU();
             ManageCarIdleSounds();
         }
     }
@@ -50,6 +62,31 @@ public class IgnitionScript : MonoBehaviour
         {
             stopIdleSounds();
             idleAudioSource.PlayOneShot(engineShutoffClip, 3f);
+        }
+    }
+    private void ManageCarIU()
+    {
+        if (ignitionState == IgnitionState.IgnitionOn)
+        {
+            InstructionText.gameObject.SetActive(false);
+            SetAlphaUI(1);
+        }
+        else
+        {
+            InstructionText.gameObject.SetActive(true);
+            SetAlphaUI(0.5f);
+        }
+    }
+
+    private void SetAlphaUI(float alpha)
+    {
+        foreach(Image UIGuage in UIGauges)
+        {
+            Color c = UIGuage.color;
+
+            c.a = alpha;
+
+            UIGuage.color = c;
         }
     }
 
