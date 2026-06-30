@@ -1,4 +1,4 @@
-![App Screenshot](https://dummyimage.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](https://github.com/dkiexe/ManualCarController/blob/main/Assets/Art/DemoImgae.png)
 
 
 # ManualCarController
